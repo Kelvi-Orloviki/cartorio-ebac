@@ -3,23 +3,24 @@
 #include <locale.h> //Biblioteca de alocações de texto por região
 #include <string.h> //Biblioteca responsável por cuidar das string
 
-int registro()
+int registro() //Função responsável por cadastrar os usuários no sistema
 {
 	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
-	
+	//Início criação de variáveis/string
 	char arquivo[40];
 	char cpf[40];
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
+	//Final da criação de variáveis/string
 	
-	printf("Digite o CPF a ser cadastrado: ");
-	scanf("%s", cpf);
+	printf("Digite o CPF a ser cadastrado: "); //Coletando informação do usuário
+	scanf("%s", cpf); //%s refere-se a string
 	
 	strcpy(arquivo, cpf); //Responsável por copiar os valores das string
 	
 	FILE *file; //Cria o arquivo
-	file = fopen(arquivo, "w"); //Cria o arquivo
+	file = fopen(arquivo, "w"); //Cria o arquivo e o "w" significa "escrever"
 	fprintf(file, "CPF: ");
 	fprintf(file, cpf); //Salvo o valor da variável
 	fclose(file); //Fecha o arquivo
@@ -118,7 +119,7 @@ int main()
 	
 	for(laco=1;laco=1;)
 	{
-		system("cls");
+		system("cls"); //Responsável por limpar a tela
 	
 		setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
 	
@@ -126,17 +127,18 @@ int main()
 		printf("Escolha a opção desejada do menu:\n\n");
 		printf("\t1 - Registrar nomes\n");
 		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n\n");
+		printf("\t3 - Deletar nomes\n");
+		printf("\t4 - Sair do sistema\n\n");
 		printf("Digite a opção desejada: "); //Fim do menu
 	
 		scanf("%d", &opcao); //Armazenando a escolha do usuário
 	
 		system("cls"); //limpar informações da tela
 		
-		switch(opcao)
+		switch(opcao) //Início da seleção do menu
 		{
 			case 1:
-			registro();
+			registro(); //Chamada de funções
 			break;
 			
 			case 2:
@@ -145,6 +147,11 @@ int main()
 			
 			case 3:
 			deletar();
+			break;
+			
+			case 4:
+			printf("Obrigado por utilizar o sistema!\n");
+			return 0;
 			break;
 			
 			default:
